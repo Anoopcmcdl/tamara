@@ -1,0 +1,34 @@
+fragment TransactionInitializeSessionEvent on TransactionInitializeSession {
+  __typename
+  recipient {
+    ...PaymentGatewayRecipient
+  }
+  data
+  merchantReference
+  action {
+    amount
+    currency
+    actionType
+  }
+  issuingPrincipal {
+    ... on Node {
+      id
+    }
+  }
+  transaction {
+    id
+    pspReference
+    authorizedAmount {
+      currency
+      amount
+    }
+    chargedAmount {
+      currency
+      amount
+    }
+  }
+  sourceObject {
+    __typename
+    ...OrderOrCheckoutSourceObject
+  }
+}

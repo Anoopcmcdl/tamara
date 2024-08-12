@@ -1,0 +1,24 @@
+version: "3"
+services:
+  payment-tamara:
+    container_name: tamara
+    build:
+      context: .
+      dockerfile: Dockerfile
+    image: tamara:latest
+    restart: unless-stopped
+    env_file: .env
+    environment:
+      SECRET_KEY: ${SECRET_KEY}
+      REDIRECT_URL: ${REDIRECT_URL}
+      SALEOR_APP_TOKEN: ${SALEOR_APP_TOKEN}
+      SALEOR_APP_ID: ${SALEOR_APP_ID}
+      SALEOR_API_URL: ${SALEOR_API_URL}
+    ports:
+      - "3001:3001"
+    networks:
+      - tamara
+networks:
+  tamara:
+    name: Tamara
+    driver: bridge

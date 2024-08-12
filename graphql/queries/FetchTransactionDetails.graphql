@@ -1,0 +1,22 @@
+query FetchTransactionDetails($id: ID!) {
+  transaction(id: $id) {
+    id
+    actions
+    events {
+      id
+      amount {
+        amount
+      }
+      type
+    }
+    authorizedAmount {
+      amount
+    }
+    chargedAmount {
+      amount
+    }
+    chargePendingAmount {
+      amount
+    }
+  }
+}
